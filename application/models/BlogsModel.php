@@ -17,6 +17,20 @@ class BlogsModel extends CI_Model {
         );
         return $this->db->insert('blogs', $data);
     }
+
+    public function update_blog($id){
+        $data = array(
+            'title' => $this->input->post('title'),
+            'descriotion' => $this->input->post('description'),
+        );
+        if($id == 0){
+            return $this->db->insert('blogs', $data);
+        } else {
+            $this->db->where('id', $id);
+            return $this->db->insert('blogs', $data);
+        }
+        
+    }
 }
 
 ?>

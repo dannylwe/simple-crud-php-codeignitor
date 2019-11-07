@@ -31,4 +31,18 @@ class Blogs extends CI_Controller {
 		$this->load->view('blogs/create');
 		$this->load->view('includes/footer');
 	}
+
+	public function edit($id){
+		$blog = $this->db->get_where('blogs', array('id' => $id))->row();
+		$this->load->view('includes/header');
+		// this is view
+		$this->load->view('blogs/edit', array('blog' => $blog));
+		$this->load->view('includes/footer');
+	}
+
+	public function update($id){
+		$blogs = new BlogsModel;
+		$blogs->update_blog($id);
+		redirect(base_url('blogs'));
+	}
 }
