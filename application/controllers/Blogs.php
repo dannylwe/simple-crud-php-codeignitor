@@ -19,10 +19,16 @@ class Blogs extends CI_Controller {
 	}
 
 	public function store(){
-
+		$blogs = new BlogsModel;
+		$blogs->insert_blog();
+		redirect(base_url('blogs'));
 	}
 
 	public function create(){
-		echo "created";
+
+		$this->load->view('includes/header');
+		// this is view
+		$this->load->view('blogs/create');
+		$this->load->view('includes/footer');
 	}
 }
