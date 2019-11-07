@@ -45,4 +45,10 @@ class Blogs extends CI_Controller {
 		$blogs->update_blog($id);
 		redirect(base_url('blogs'));
 	}
+
+	public function delete($id){
+		$this->db->where('id', $id);
+		$this->db->delete('blogs');
+		redirect(base_url('blogs'));
+	}
 }
