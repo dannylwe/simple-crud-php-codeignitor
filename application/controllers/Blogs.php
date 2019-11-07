@@ -10,12 +10,19 @@ class Blogs extends CI_Controller {
 
 	public function index(){
 		$blogs = new BlogsModel;
-		$data = $blogs->get_blogs();
-		print_r($data);
-		$this->load->view('welcome_message');
+		$data['data'] = $blogs->get_blogs();
+		// print_r($data);
+		$this->load->view('includes/header');
+		// this is the view
+		$this->load->view('blogs/list', $data);
+		$this->load->view('includes/footer');
 	}
 
 	public function store(){
+
+	}
+
+	public function create(){
 
 	}
 }
